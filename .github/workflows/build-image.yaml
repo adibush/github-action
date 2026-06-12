@@ -22,6 +22,6 @@ jobs:
           context: ./github-action  # Path to the Dockerfile and build context
           push: true
           tags: |
-            adibush/app-node:${{ github.sha }}
+            adibush/app-node:latest101
       - name: Logout from Docker Hub
         run: docker logout
