@@ -19,7 +19,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./github-action  # Path to the Dockerfile and build context
+          context: . # Path to the Dockerfile and build context
           push: true
           tags: |
             adibush/app-node:latest101
