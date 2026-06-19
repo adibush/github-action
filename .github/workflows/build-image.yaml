@@ -1,27 +1,36 @@
 name: Docker Build and Push
+
 on:
   push:
     branches:
-      - main  # Replace with your branch name
+      - main
+
 jobs:
   build-and-push:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: . # Path to the Dockerfile and build context
-          push: true
-          tags: |
-            adibush/app-node:latest101
-      - name: Logout from Docker Hub
-        run: docker logout
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: |
+          adibush/app-node:latest
+
+    - name: Logout
+      run: docker logout
