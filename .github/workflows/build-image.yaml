@@ -30,7 +30,8 @@ jobs:
         context: .
         push: true
         tags: |
+          adibush/app-node:${{ github.sha }}
           adibush/app-node:latest
-
+          
     - name: Logout
       run: docker logout
