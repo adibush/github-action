@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: app-node
-          image: adibush/app-node:9484ba8273433bd661f838543ec5e81c795ac1d7
+          image: adibush/app-node:9feb30e98da89f975a331c043d12c3c009b6580b
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
